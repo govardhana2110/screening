@@ -5,8 +5,8 @@ import DrangAndDrop from "../../components/dragAndDrop/index.jsx";
 import MultiStepForm from "../../components/multistepForm/index.js";
 import MultiSelectStepForm from "../../components/multiSelectForm/index.js";
 import NetworkGraph from "../../components/d3Sample/index.js";
-import { useDispatch, useSelector } from "react-redux";
-import { setSampleReduxStatus } from "../../store/slices/sampleRedux.js";
+// import { useDispatch, useSelector } from "react-redux";
+import LoginComponent from "../login/index.jsx";
 
 const Dashboard = () => {
   const [chartData, setChartData] = useState(null);
@@ -16,8 +16,8 @@ const Dashboard = () => {
     educationDetails: { Level: "", Institute: "", Passed: "", Percentage: "" },
     addressDetails: { Line1: "", State: "", Country: "" },
   });
-  const dispatch = useDispatch();
-  const storeData = useSelector((state) => state);
+  // const dispatch = useDispatch();
+  // const storeData = useSelector((state) => state);
   const [pageNo, setPageNo] = useState(0);
 
   const getDummyData = async () => {
@@ -39,7 +39,7 @@ const Dashboard = () => {
     try {
       const response = await axios.get("API URL");
       if (response.success) {
-        dispatch(setSampleReduxStatus(response));
+        // dispatch(setSampleReduxStatus(response));
       } else {
         console.log("error");
       }
@@ -118,6 +118,7 @@ const Dashboard = () => {
   return (
     <>
       <div>
+        <LoginComponent> </LoginComponent>
         {/* <DrangAndDrop></DrangAndDrop> */}
         {/* {chartData && (
         <>
@@ -151,10 +152,10 @@ const Dashboard = () => {
         ></MultiSelectStepForm>
       </div>
       <NetworkGraph></NetworkGraph>
-      {storeData &&
+      {/* {storeData &&
         storeData.data.map((item) => {
           return <div>{item}</div>;
-        })}
+        })} */}
       <button onClick={nextClick}>Next</button>
       <button onClick={prevClick}>Prev</button>
     </>
