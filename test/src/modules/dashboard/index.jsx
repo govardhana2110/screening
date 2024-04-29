@@ -7,6 +7,7 @@ import MultiSelectStepForm from "../../components/multiSelectForm/index.js";
 import NetworkGraph from "../../components/d3Sample/index.js";
 // import { useDispatch, useSelector } from "react-redux";
 import LoginComponent from "../login/index.jsx";
+import dummyGet from "../../lib/services/dummyAPI/index.js";
 
 const Dashboard = () => {
   const [chartData, setChartData] = useState(null);
@@ -112,7 +113,11 @@ const Dashboard = () => {
   const prevClick = () => {
     setPageNo((prev) => prev - 1);
   };
-  useEffect(() => {
+  const getDummyDataApi=async()=>{
+const response= await dummyGet()
+console.log(response)
+  }
+  useEffect(() => {getDummyDataApi()
     // getReduxData();
   }, [pageNo]);
   return (
